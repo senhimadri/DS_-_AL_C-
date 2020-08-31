@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
 using System.Globalization;
 
 namespace T1
@@ -9,6 +10,8 @@ namespace T1
     {
         static void Main(string[] args)
         {
+            #region Chapter 1 - An Introduction to Collections, Generics, and the Timing Class-----------------------------
+            //****---------------------------Chapter 1 - An Introduction to Collections, Generics, and the Timing Class---------------****
             #region T1 Page-4
             //Name myName = new Name("Himadri", "Sen", "Apu");
             //string fullName, Inits;
@@ -18,7 +21,6 @@ namespace T1
             //Console.WriteLine("My initials is {0}.", Inits);
             //Console.ReadLine();
             #endregion
-
             #region T2 Page-6
             //int num;
             //string snum;
@@ -28,7 +30,6 @@ namespace T1
             //Console.WriteLine(num);
             //Console.ReadLine();
             #endregion
-
             #region T3 Page-12 -Collection (ArrayList)
 
             //ArrayList Al = new ArrayList();
@@ -63,7 +64,6 @@ namespace T1
             //Console.ReadKey();
 
             #endregion
-
             #region T3 Pagge-12 -Collection (Hashtable)
 
             //Hashtable Ht = new Hashtable();
@@ -96,7 +96,6 @@ namespace T1
 
             //Console.ReadLine();
             #endregion
-
             #region T3 Page-12 -Collection (SortedList)
 
             //SortedList Sl = new SortedList();
@@ -125,7 +124,6 @@ namespace T1
             //Console.WriteLine(Sl.IndexOfKey("003"));
             //Console.ReadLine();
             #endregion
-
             #region T3 Page-12 -Collection (Stack)
             //Stack St = new Stack();
             //St.Push('A');
@@ -173,7 +171,6 @@ namespace T1
             //Console.WriteLine();
             //Console.ReadLine();
             #endregion
-
             #region T3 Page-12 -Collection (Queue)
             //Queue Q = new Queue();
             //Q.Enqueue('S');
@@ -214,7 +211,6 @@ namespace T1
             //Console.WriteLine("Removed Value {0}", Ch);
             //Console.ReadLine();
             #endregion
-
             #region T3 Page-12 -Collection (BitArray)
 
             ////Creating 2 BitArray of Size 8
@@ -239,7 +235,6 @@ namespace T1
 
             //Console.ReadLine();
             #endregion
-
             #region T4 Page-15 - Generic
 
             //MyGenericArray<int> intArray = new MyGenericArray<int>(5);
@@ -266,7 +261,6 @@ namespace T1
 
             //Console.ReadLine();
             #endregion
-
             #region T4 Page-15 Generic (Methods)
             //int Num1 = 100;
             //int Num2 = 200;
@@ -290,14 +284,12 @@ namespace T1
             //Console.WriteLine("String 2: " + Str2);
             //Console.ReadLine();
             #endregion
-
             #region T4 Page-15 - Generic  (Class)
 
             //Node<string> node1 = new Node<string>("Mike", null);
             //Node<string> node2 = new Node<string>("Raymond", node1);
 
             #endregion
-
             #region Generic (Methods YouTube Video)
             ////Link: https://www.youtube.com/watch?v=jb0G6FM3-6Y&t=891s
 
@@ -319,7 +311,6 @@ namespace T1
 
             //Console.ReadLine();
             #endregion
-
             #region T4 Page- 15 Generic (class YouTube Video)
             ////Link: https://www.youtube.com/watch?v=LRUKsUAGwts
 
@@ -331,29 +322,83 @@ namespace T1
 
             //Console.ReadLine();
             #endregion
-
             #region TimingTest
-
-            //int[] arrrr = new int[3];
-
-            //arrrr[0] = 12;
-            //arrrr[1] = 15;
-            //arrrr[2] = 17;
+            //int[] arrrr = new int[]{2,5,8,3,6};
 
             //DateTime StartTime;
             //TimeSpan endtime;
-            //StartTime = DateTime.Now;      
+            //StartTime = DateTime.Now;
             //DisplayNums(arrrr);
             //endtime = DateTime.Now.Subtract(StartTime);
-
-            //Console.WriteLine("{0},{1}",StartTime.ToString(),endtime);
+            //GC.Collect();
+            //Console.WriteLine("{0},{1}", StartTime.ToString(), endtime);
 
             //Console.ReadLine();
 
             #endregion
+            #region Page 19 - Collect()
+            //// Link : https://docs.microsoft.com/en-us/dotnet/api/system.gc.collect?view=netcore-3.1#:~:text=It%20performs%20a%20blocking%20garbage,maximum%20amount%20of%20available%20memory.
+            //// Put some objects in memory.
+            //_GarbadgeClass _garbadgeClass = new _GarbadgeClass();
+            //_garbadgeClass.MakeSomeGarbadge();
 
-            //----------------------------- Chapter 2 - Arrays and ArrayLists ------------------------------------
+            //Console.WriteLine("Memory Used Before Collection {0:N0}", GC.GetTotalMemory(false));
+            //// Collect all generations of memory.
+            //GC.Collect();
+            //Console.WriteLine("Memory used before Collection {0:N0}", GC.GetTotalMemory(true));
+            ////------------------------------------------------------------------------------------------------
 
+            //// Determine the maximum number of generations the system garbage collector currently supports.
+            //Console.WriteLine("The Height Generation is : {0}", GC.MaxGeneration);
+
+            //// Determine which generation myGCCol object is stored in.
+            //Console.WriteLine("The Generation : {0}", GC.GetGeneration(_garbadgeClass));
+
+            //// Determine the best available approximation of the number of bytes currently allocated in managed memory.
+            //Console.WriteLine("Total Memory:  : {0}", GC.GetTotalMemory(false));
+            //// Perform a collection of generation 0 only.
+
+            //GC.Collect(0);
+            //// Determine which generation myGCCol object is stored in.
+            //Console.WriteLine("The Generation : {0}", GC.GetGeneration(_garbadgeClass));
+
+            //// Determine the best available approximation of the number of bytes currently allocated in managed memory.
+            //Console.WriteLine("Total Memory:  : {0}", GC.GetTotalMemory(false));
+
+            //GC.Collect(0);
+            //// Determine which generation myGCCol object is stored in.
+            //Console.WriteLine("The Generation : {0}", GC.GetGeneration(_garbadgeClass));
+
+            //// Determine the best available approximation of the number of bytes currently allocated in managed memory.
+            //Console.WriteLine("Total Memory:  : {0}", GC.GetTotalMemory(false));
+
+            //Console.ReadLine();
+            #endregion
+            #region Page 18 Timming Test for the .NET Environment 
+            //int[] nums = new int[100000];
+            //BuildArray(nums);
+            //TimeSpan StartTime;
+            //TimeSpan Duration;
+            //StartTime = Process.GetCurrentProcess().Threads[0].UserProcessorTime;
+            //DisplayNums(nums);
+            //Duration = Process.GetCurrentProcess().Threads[0].UserProcessorTime.Subtract(StartTime);
+            //Console.WriteLine("Starttime: {0}, Duration : {1}", StartTime, Duration.TotalSeconds);
+            //Console.ReadLine();
+            #endregion
+            #region Page 21- A Timing Test Class
+            //int[] nums = new int[100000];
+            //BuildArray(nums);
+            //Timing Tobj = new Timing();
+            //Tobj.StartTime();
+            //DisplayNums(nums);
+            //Tobj._StopTime();
+            //Console.WriteLine("Time (.NET): {0}", Tobj.Result().TotalSeconds);
+            //Console.ReadLine();
+            #endregion
+            //---------------------------*****************************************************************************--------------------
+            #endregion
+            #region Chapter 2 - Arrays and ArrayLists-----------------------------------------------
+            //--------------------------------------- Chapter 2 - Arrays and ArrayLists -----------------------------------
             #region Array Type
             //int[] number = new int[] {2,5,3,9,5,12};
             //Type arrayType = number.GetType();
@@ -369,7 +414,6 @@ namespace T1
             //Console.ReadLine();
 
             #endregion
-
             #region Multidimentional Array
 
             //int[,] Greade = new int[4,6];
@@ -396,7 +440,6 @@ namespace T1
             //}
             //Console.ReadLine();
             #endregion
-
             #region GetUpperBound & GetLowerBound
 
             //int[,,] arr = new int[2, 3, 4];
@@ -412,7 +455,6 @@ namespace T1
 
             //Console.ReadLine();
             #endregion
-
             #region Parameter Arrays --- Page 32
 
             //int[] arrr = new int[] { 1,2,3};
@@ -421,7 +463,6 @@ namespace T1
             //Console.WriteLine(aaa.ToString());
             //Console.ReadLine();
             #endregion
-
             #region Jagged Arrays --
             //int[][] source = new int[5][];
 
@@ -440,53 +481,126 @@ namespace T1
             //}
             //Console.ReadLine();
             #endregion
-
             #region Arraylist-------
 
-            ArrayList Greads = new ArrayList();
-            Greads.Add(22);
-            Greads.Add(30);
-            Greads.Add(216);
-            Greads.Add(1327);
+            //ArrayList Greads = new ArrayList();
+            //Greads.Add(22);
+            //Greads.Add(30);
+            //Greads.Add(216);
+            //Greads.Add(1327);
 
-            int position;
+            //int position;
 
-            position = Greads.Add(90);
-            Console.WriteLine(position.ToString());
+            //position = Greads.Add(90);
+            //Console.WriteLine(position.ToString());
 
-            foreach (var item in Greads)
-            {
-                Console.WriteLine(item);
-            }
-            Console.WriteLine("---------------------------------------");
-            Greads.Insert(1,23);
+            //foreach (var item in Greads)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //Console.WriteLine("---------------------------------------");
+            //Greads.Insert(1,23);
 
-            foreach (var item in Greads)
-            {
-                Console.WriteLine(item);
-            }
-            Console.WriteLine("---------------------------------------");
-            Console.WriteLine("Capasity : {0}, Count : {1}",Greads.Capacity,Greads.Count);
+            //foreach (var item in Greads)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //Console.WriteLine("---------------------------------------");
+            //Console.WriteLine("Capasity : {0}, Count : {1}",Greads.Capacity,Greads.Count);
 
-            Console.WriteLine("---------------------------------------");
-            ArrayList getrange = new ArrayList();
+            //Console.WriteLine("---------------------------------------");
+            //ArrayList getrange = new ArrayList();
 
-            getrange = Greads.GetRange(2, 2);
-            foreach (var item in getrange)
-            {
-                Console.WriteLine(item);
-            }
-            Console.WriteLine("---------------------------------------");
-            int[] Nameee;
-            Nameee = Greads.ToArray();
-            Console.ReadLine();
+            //getrange = Greads.GetRange(2, 2);
+            //foreach (var item in getrange)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //Console.WriteLine("---------------------------------------");
+            //Console.ReadLine();
             #endregion
+            //----------------------------------------------**************************-------------------------------------
+            #endregion
+            #region Chapter 3 - Basic Sorting Algorithms----------------------------------------------
+            //-------------------------------------- Chapter 3 - Basic Sorting Algorithms -----------------------------------
+            #region Page 43- An Array Class Test Bed   ------ Problom is not solved
+            //CArray nums = new CArray(49);
+            //for (int i = 0; i <= 49; i++)
+            //    nums.Insert(i);
+            //nums.DisplayElements();
+            #endregion
+            #region Page 45 -- Bubble Sort
+            //int[] Arr = {78,26,53,60,48, 2,3,4,12,47,20,26,50 };
+            //int Temp;
+            //for (int i = 0; i < Arr.Length; i++)
+            //{
+            //    for (int j =0 ; j < Arr.Length-1; j++)
+            //    {
+            //        if (Arr[j]>Arr[j+1])
+            //        {
+            //            Temp = Arr[j + 1];
+            //            Arr[j + 1] = Arr[j];
+            //            Arr[j] = Temp;
+            //        }
+            //    }
+            //}
+            //for (int i = 0; i < Arr.Length; i++)
+            //{
+            //    Console.WriteLine(Arr[i].ToString());
+            //}
+            //Console.ReadLine();
+            #endregion
+            #region Page 48 Selection Sort
+            //int[] Arr = new int[] { 4, 7, 5, 3, 9 };
+            //int temp, Sm;
+            //for (int i = 0; i < Arr.Length - 1; i++)
+            //{
+            //    Sm = i;
+            //    for (int j = i + 1; j < Arr.Length; j++)
+            //    {
+            //        if (Arr[j] < Arr[Sm])
+            //        {
+            //            Sm = j;
+            //        }
+            //    }
+            //    temp = Arr[Sm];
+            //    Arr[Sm] = Arr[i];
+            //    Arr[i] = temp;
+            //}
+            //for (int i = 0; i < Arr.Length; i++)
+            //{
+            //    Console.Write(Arr[i] + ",");
+            //}
+            //Console.ReadLine();
+            #endregion
+            #region Page 50 - Insertion Sort
+            //int[] arr = new int[] {22,31,15,41,17};
+            //int inner, temp;
+            //for (int Outer= 0; Outer < arr.Length; Outer++)
+            //{
+            //    temp = arr[Outer];
+            //    inner = Outer;
+            //    while (inner>0 && arr[inner-1]>=temp)
+            //    {
+            //        arr[inner] = arr[inner - 1];
+            //        inner -= 1;
+            //    }
+            //    arr[inner] = temp;
+            //}
+            //for (int i = 0; i < arr.Length; i++)
+            //{
+            //    Console.Write(arr[i]+",");
+            //}
+            //Console.ReadLine();
+            #endregion
+            #region Page 51 - Timming Comparisons of the Basic Sorting Algorithm
 
+            #endregion
+            //-----------------------------------------****************************-------------------------------------------
+            #endregion
         }
-
-
-
-
+        #region Chapter 1 - An Introduction to Collections, Generics, and the Timing Class
+        //---------------------------Chapter 1 - An Introduction to Collections, Generics, and the Timing Class-----------
         #region T4 Page-15- Generic (Methods)
         //static void Swap<T>(ref T Val1, ref T Val2)
         //{
@@ -496,21 +610,51 @@ namespace T1
         //    Val2 = temp;
         //}
         #endregion
-
         #region Timing Test Page 17
-        //static void DisplayNums( int[] arr)
+        //static void DisplayNums(int[] arr)
         //{
         //    for (int i = 0; i < arr.GetUpperBound(0); i++)
         //    {
-        //        Console.Write(arr[i]+"");
+        //        Console.Write(arr[i] + "");
         //    }
-
-
         //}
         #endregion
-
-        //----------------------------- Chapter 2 - Arrays and ArrayLists ------------------------------------
-
+        #region Page 51 - Timming Comparisons of the Basic Sorting Algorithms
+        //static void BuildArray(int [] arr)
+        //{
+        //    for (int i = 0; i <= 99999; i++)
+        //    {
+        //        arr[i] = i;
+        //    }
+        //}
+        //static void DisplayNums(int[] arr)
+        //{
+        //    for (int i = 0; i < arr.GetUpperBound(0); i++)
+        //    {
+        //        Console.Write(arr[i] + "");
+        //    }
+        //}
+        #endregion
+        #region Page 21 - A Timing Test Class
+        //static void BuildArray(int[] arr)
+        //{
+        //    for (int i = 0; i <= 99999; i++)
+        //    {
+        //        arr[i] = i;
+        //    }
+        //}
+        //static void DisplayNums(int[] arr)
+        //{
+        //    for (int i = 0; i < arr.GetUpperBound(0); i++)
+        //    {
+        //        Console.Write(arr[i] + "");
+        //    }
+        //}
+        #endregion
+        //----------------------------******************************************-----------------------------------------
+        #endregion
+        #region Chapter 2 - Arrays and ArrayLists
+        //--------------------------------------- Chapter 2 - Arrays and ArrayLists ------------------------------------
         #region Parameter Arrays --- Page 32
         //static int Sumnums( params int [] nums)
         //{
@@ -522,7 +666,6 @@ namespace T1
         //    return sum;
         //}
         #endregion
-
         #region Jagged Arrays ----Methods that return the length of any column of Jagged Array
 
         //public static int GetColumnLength(int[][] jaggedArray, int columnindex)
@@ -536,7 +679,15 @@ namespace T1
         //}
 
         #endregion
+        //--------------------------------------************************************-------------------------------------
+        #endregion
+        #region Chapter 3 - Basic Sorting Algorithms
+        //-------------------------------------- Chapter 3 - Basic Sorting Algorithms -----------------------------------
+        //--------------------------------------************************************-------------------------------------
+        #endregion
     }
+    #region Chapter 1 - An Introduction to Collections, Generics, and the Timing Class
+    //---------------------------Chapter 1 - An Introduction to Collections, Generics, and the Timing Class-----------
     #region T1 Page-4
     //public struct Name
     //{
@@ -633,9 +784,85 @@ namespace T1
     //    }
     //}
     #endregion
-
-
-
-
-
+    #region Page 19 Collect()
+    //class _GarbadgeClass
+    //{
+    //    private const int MaxGarbadge = 1000;
+    //    public void MakeSomeGarbadge()
+    //    {
+    //        Version Vt;
+    //        // Create object and release them to fill up memory with unused object 
+    //        for (int i = 0; i < MaxGarbadge; i++)
+    //        {
+    //            Vt = new Version();
+    //        }
+    //    }
+    //}
+    #endregion
+    #region Page 21 - A Timing Test Class
+    //public class Timing
+    //{
+    //    TimeSpan StartingTime;
+    //    TimeSpan DurationTime;
+    //    public Timing()
+    //    {
+    //        StartingTime = new TimeSpan(0);
+    //        DurationTime = new TimeSpan(0);
+    //    }
+    //    public void _StopTime()
+    //    {
+    //        DurationTime = Process.GetCurrentProcess().Threads[0].UserProcessorTime.Subtract(StartingTime);
+    //    }
+    //    public void StartTime()
+    //    {
+    //        GC.Collect();
+    //        GC.WaitForPendingFinalizers();
+    //        StartingTime = Process.GetCurrentProcess().Threads[0].UserProcessorTime;
+    //    }
+    //    public TimeSpan Result()
+    //    {
+    //        return DurationTime;
+    //    }
+    //}
+    #endregion
+    //-------------------------------------*************************************-------------------------------
+    #endregion
+    #region Chapter 2 - Arrays and ArrayLists
+    //--------------------------------------- Chapter 2 - Arrays and ArrayLists ------------------------------------
+    //------------------------------------------*******************************-------------------------------------
+    #endregion
+    #region Chapter 3 - Basic Sorting Algorithms
+    //-------------------------------------- Chapter 3 - Basic Sorting Algorithms -----------------------------------
+    #region Page 43- An Array Class Test Bed
+    //class CArray
+    //{
+    //    private int[] arr;
+    //    private int upper;
+    //    private int numElements;
+    //    public CArray(int size)
+    //    {
+    //        arr = new int[size];
+    //        upper = size - 1;
+    //        numElements = 0;
+    //    }
+    //    public void Insert(int item)
+    //    {
+    //        arr[numElements] = item;
+    //        numElements++;
+    //    }
+    //    public void DisplayElements()
+    //    {
+    //        for (int i = 0; i <= upper; i++)
+    //            Console.Write(arr[i] + " ");
+    //    }
+    //    public void Clear()
+    //    {
+    //        for (int i = 0; i <= upper; i++)
+    //            arr[i] = 0;
+    //        numElements = 0;
+    //    }
+    //}
+    #endregion
+    //----------------------------------------********************************---------------------------------------
+    #endregion
 }
